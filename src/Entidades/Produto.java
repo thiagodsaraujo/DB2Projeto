@@ -50,4 +50,10 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
+    public int setQtd(int quantidade){
+        this.quantidade = quantidade;
+        return quantidade;
+    }
+
+
 }

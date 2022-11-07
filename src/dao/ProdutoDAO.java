@@ -106,22 +106,35 @@ public class ProdutoDAO {
         }
     }
 
-    public int retornarQuantidadeProduto(Produto produto) {
+    public void retornarQuantidadeProduto() {
         String sql = "SELECT p.quantidade FROM produto p WHERE codigoproduto =?";
+        CallableStatement cs = null;
 
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
-            preparador.setInt(1, produto.getCodigoProduto());
-            ResultSet resultados = preparador.executeQuery();
 
-            preparador.execute();
-            preparador.close();
+            cs = con.prepareCall(sql);
+            cs.setInt("quantidade", 1);
+            cs.executeQuery();
+
+            ResultSet resultados = cs.getResultSet();
+
+            if (resultados.next()){
+                System.out.println(resultados.getInt(4));
+            }
+//            while (resultados.next()) {
+//
+//                Produto produto = new Produto();
+//                produto.setCodigoProduto(resultados.getInt("codigoproduto"));
+//                produto.setDescricao(resultados.getString("descricao"));
+//                produto.setValor(resultados.getDouble("valor"));
+//                qtd = produto.setQtd(resultados.getInt("quantidade"));
+//            }
+
             System.out.println("Alteração realizada!");
         } catch (SQLException e) {
             System.out.println("Erro - " + e.getMessage());
         }
-
-        return produto.getQuantidade();
     }
 
 

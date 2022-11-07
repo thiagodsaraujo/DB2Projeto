@@ -1,12 +1,9 @@
 package Teste;
 
-import Entidades.Estabelecimento;
 import Entidades.Produto;
-import dao.EstabelecimentoDAO;
 import dao.ProdutoDAO;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class MainProduto {
 
@@ -33,7 +30,7 @@ public class MainProduto {
 //        cadastrarProduto(2,"Teclado",300.0, 1);
 //        cadastrarProduto(3,"Monitor",500.0, 1);
 //        listarProduto();
-        System.out.println(retornarQtdEstoque(1));
+        retornarQtdEstoque(1);
 //        atualizarValorProdutoPorCodigo(1, 250.0);
 //        atualizarValorProdutoPorDescricao("Teclado", 350.0);
 //        deletarProdutoPorCodigo(3);
@@ -47,13 +44,13 @@ public class MainProduto {
 
     }
 
-    private static int retornarQtdEstoque(int codigoProduto) {
+    private static void retornarQtdEstoque(int codigoProduto) {
         Produto produto = new Produto();
 
         ProdutoDAO produtoDAO = new ProdutoDAO();
         produto.setCodigoProduto(codigoProduto);
 
-        return produtoDAO.retornarQuantidadeProduto(produto);
+        produtoDAO.retornarQuantidadeProduto();
     }
 
     private static void cadastrarProduto(int codigoProduto, String descricao, Double valor, int quantidade) {
