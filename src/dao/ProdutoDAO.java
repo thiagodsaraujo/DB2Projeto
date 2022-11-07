@@ -106,22 +106,28 @@ public class ProdutoDAO {
         }
     }
 
-    public void retornarQuantidadeProduto() {
-        String sql = "SELECT p.quantidade FROM produto p WHERE codigoproduto =?";
-        CallableStatement cs = null;
+    public void retornarQuantidadeProduto(int codigo) {
+        String sql = "SELECT p.quantidade FROM produto p WHERE codigoproduto = ?";
+
+//        CallableStatement cs = null;
 
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
 
-            cs = con.prepareCall(sql);
-            cs.setInt("quantidade", 1);
-            cs.executeQuery();
+            preparador.setInt(1, codigo);
 
-            ResultSet resultados = cs.getResultSet();
+            preparador.execute();
+            preparador.close();
 
-            if (resultados.next()){
-                System.out.println(resultados.getInt(4));
-            }
+//            cs = con.prepareCall(sql);
+//            cs.setInt("quantidade", 1);
+//            cs.executeQuery();
+//
+//            ResultSet resultados = cs.getResultSet();
+//
+//            if (resultados.next()){
+//                System.out.println(resultados.getInt(4));
+//            }
 //            while (resultados.next()) {
 //
 //                Produto produto = new Produto();

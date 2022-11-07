@@ -1,6 +1,8 @@
 package Teste;
 
 import Conexao.Conecta;
+import Controller.EstabelecimentoController;
+import Controller.ProdutoController;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -15,5 +17,8 @@ public class Teste {
         } catch (SQLException e){
             e.printStackTrace();
         }
+
+        ProdutoController controller = new ProdutoController();
+        controller.retornarQtdEstoque(1);
     }
 }

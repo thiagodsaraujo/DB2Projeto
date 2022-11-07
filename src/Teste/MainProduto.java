@@ -1,14 +1,15 @@
 package Teste;
 
+import Controller.ProdutoController;
+import Controller.VendedorController;
 import Entidades.Produto;
 import dao.ProdutoDAO;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class MainProduto {
 
-
-    public static void main(String[] args) {
 
 
 //        Scanner entrada = new Scanner(System.in);
@@ -30,7 +31,7 @@ public class MainProduto {
 //        cadastrarProduto(2,"Teclado",300.0, 1);
 //        cadastrarProduto(3,"Monitor",500.0, 1);
 //        listarProduto();
-        retornarQtdEstoque(1);
+//        retornarQtdEstoque(1);
 //        atualizarValorProdutoPorCodigo(1, 250.0);
 //        atualizarValorProdutoPorDescricao("Teclado", 350.0);
 //        deletarProdutoPorCodigo(3);
@@ -40,86 +41,92 @@ public class MainProduto {
 
 
 //            var pk = random.ints(1,100).findFirst().getAsInt();
+public static void main(String[] args) {
 
+    Escolha3 esc = new Escolha3();
 
+    boolean val = false;
+
+    while(val == false) { // Enquanto "val"for "false" o while vai ficar fazendo loop, mas quando se tornar "true" ele vai parar
+        int opc = esc.menu();
+        val = esc.escolher(opc);
     }
+}
+}
 
-    private static void retornarQtdEstoque(int codigoProduto) {
-        Produto produto = new Produto();
+class Escolha3 {
 
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-        produto.setCodigoProduto(codigoProduto);
+    ProdutoController controller = new ProdutoController();
 
-        produtoDAO.retornarQuantidadeProduto();
-    }
+    public boolean escolher(int escolha) {
+        switch (escolha) {
 
-    private static void cadastrarProduto(int codigoProduto, String descricao, Double valor, int quantidade) {
+            case 1:
+                System.out.println("CADASTRO DO PRODUTO");
+                Scanner entrada = new Scanner(System.in);
+                System.out.println("Informe o codigo do Produto: ");
+                int codigoProduto = entrada.nextInt();
+                entrada.nextLine();
+                System.out.println("Informe a descricao desejado para o vendedor: ");
+                String descricao = entrada.nextLine();
+                System.out.println("Informe o valor do estabelecimento do vendedor: ");
+                Double valor = entrada.nextDouble();
+                entrada.nextLine();
+                System.out.println("Informe a quantidade do do vendedor: ");
+                int quantidade = entrada.nextInt();
+                entrada.nextLine();
+                controller.cadastrarProduto(codigoProduto,descricao,valor,quantidade);
+                entrada.close();
+                return true;
+            case 2:
+                Scanner entradaAtt = new Scanner(System.in);
+                System.out.println("ATUALIZAÇÃO DO VALOR DO PRODUTO POR CODIGO");
+                controller.listarProduto();
+                System.out.println("\n");
+                System.out.println("Informe a Matricula do vendedor que deseja alterar: ");
+                int matriculaAtt = entradaAtt.nextInt();
+                entradaAtt.nextLine();
+                System.out.println("Informe o NOVO SALARIO desejado para o Vendedor: ");
+                Double salarioAtt = entradaAtt.nextDouble();
+                entradaAtt.nextLine();
+//                controller.atualizarSalarioVendedorPorMatricula(matriculaAtt,salarioAtt);
+                return true;
 
-        Produto produto = new Produto();
-
-        produto.setCodigoProduto(codigoProduto);
-        produto.setDescricao(descricao);
-        produto.setValor(valor);
-        produto.setQuantidade(quantidade);
-
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-
-        produtoDAO.cadastrarProduto(produto);
-
-    }
-
-    private static void atualizarValorProdutoPorDescricao(String descricao, Double valor) {
-
-        Produto produto = new Produto();
-
-        produto.setDescricao(descricao);
-        produto.setValor(valor);
-
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-
-        produtoDAO.atualizarValorProdutoPorDescricao(produto);
-    }
-
-    private static void atualizarValorProdutoPorCodigo(int codigoProduto, Double valor) {
-
-        Produto produto = new Produto();
-
-        produto.setCodigoProduto(codigoProduto);
-        produto.setValor(valor);
-
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-
-        produtoDAO.atualizarValorProdutoPorCodigo(produto);
-    }
-
-
-    private static void deletarProdutoPorCodigo(int codigoProduto) {
-
-        Produto produto = new Produto();
-
-        produto.setCodigoProduto(codigoProduto);
-
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-
-        produtoDAO.deletarProdutoPorCodigo(produto);
-    }
-
-    private static void listarProduto() {
-
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-
-        List<Produto> listaResultado = produtoDAO.selectTodos();
-
-        for(Produto p: listaResultado){
-            System.out.println("- Codigo do Produto: "  + p.getCodigoProduto()  +
-                    "\n- Nome do Produto: " + p.getDescricao()  +
-                    "\n- Valor do Produto: R$ " + p.getValor() +
-                    "\n- Quantidade em Estoque: " + p.getQuantidade() +
-                    "\n------------------------------");
+            case 3:
+                Scanner entradaDelete = new Scanner(System.in);
+                System.out.println("DELEÇÃO DO VENDEDOR POR MATRICULA");
+//                controller.listarVendedores();
+                System.out.println("\n");
+                System.out.println("Informe a matricula do Vendedor que deseja deletar: ");
+                int codigoDelete = entradaDelete.nextInt();
+//                controller.deletarVendedor(codigoDelete);
+                return true;
+            default:
+                System.out.println("Opção inválida" + "\n" + "Por favor, escolha um de nossos serviços.");
         }
+        return false; // Caso nenhuma das opções acima tenha sido escolhida ele cai aqui nesse "return false", fazendo com que o while rode novamente
+
     }
 
+    public int menu() {
+        System.out.println("-----------------------------------------" + "\n" +
+                "BEM VINDO AO SISTEMA DO PROJETO BD2" + "\n" +
+                "-----------------------------------------" + "\n" +
+                "MANIPULAÇÃO VENDEDOR" +
+                "\n-----------------------------------------" + "\n" +
+                "DIGITE A OPÇÃO DESEJADA: " + "\n" +
+                "[1] Para CADASTRAR um vendedor" + "\n" +
+                "[2] Para ATUALIZAR um vendedor" + "\n" +
+                "[3] Para DELETAR um vendedor" + "\n" +
+                "-----------------------------------------");
 
 
+        Scanner sc = new Scanner(System.in);
+
+
+        int escolha = sc.nextInt();
+
+        return escolha; // retorna o numero que o usuário escreveu
+    }
 }
 
