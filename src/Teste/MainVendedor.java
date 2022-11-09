@@ -10,20 +10,6 @@ import java.util.Scanner;
 
 public class MainVendedor {
 
-//        Scanner entrada = new Scanner(System.in);
-//        System.out.println("Informe o nome do Vendedor: ");
-//        String nome = entrada.nextLine();
-//        System.out.println("Informe a matricula do Vendedor: ");
-//        int matricula = entrada.nextInt();
-//        System.out.println("Informe o Codógio do estabelecimento do Vendedor: ");
-//        int codEstab = entrada.nextInt();
-//        System.out.println("Informe o Salário do Vendedor: ");
-//        Double salario = entrada.nextDouble();
-//
-//
-//        cadastrarVendedor(matricula, codEstab, nome, salario);
-
-
         public static void main(String[] args) {
 
             Escolha2 esc = new Escolha2();

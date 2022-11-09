@@ -11,36 +11,6 @@ import java.util.Scanner;
 public class MainProduto {
 
 
-
-//        Scanner entrada = new Scanner(System.in);
-//
-//        System.out.println("Informe o codigo do Produto: ");
-//        int codigoProduto = entrada.nextInt();
-//        entrada.nextLine();
-//
-//        System.out.println("Informe o nome do Produto: ");
-//        String descricao = entrada.nextLine();
-//
-//        System.out.println("Informe o valor do Produto: ");
-//        Double valor = entrada.nextDouble();
-//
-//
-
-//        System.out.println(retornarQtdEstoque(1));
-//        cadastrarProduto(1,"Mouse",200.0, 2);
-//        cadastrarProduto(2,"Teclado",300.0, 1);
-//        cadastrarProduto(3,"Monitor",500.0, 1);
-//        listarProduto();
-//        retornarQtdEstoque(1);
-//        atualizarValorProdutoPorCodigo(1, 250.0);
-//        atualizarValorProdutoPorDescricao("Teclado", 350.0);
-//        deletarProdutoPorCodigo(3);
-//        System.out.println("\nLista Atualizada\n");
-//        listarProduto();
-
-
-
-//            var pk = random.ints(1,100).findFirst().getAsInt();
 public static void main(String[] args) {
 
     Escolha3 esc = new Escolha3();
@@ -69,10 +39,10 @@ class Escolha3 {
                 entrada.nextLine();
                 System.out.println("Informe a descricao desejado para o vendedor: ");
                 String descricao = entrada.nextLine();
-                System.out.println("Informe o valor do estabelecimento do vendedor: ");
+                System.out.println("Informe o valor do Produto:" + descricao + " para cadastro em R$: ");
                 Double valor = entrada.nextDouble();
                 entrada.nextLine();
-                System.out.println("Informe a quantidade do do vendedor: ");
+                System.out.println("Informe a quantidade no estoque: ");
                 int quantidade = entrada.nextInt();
                 entrada.nextLine();
                 controller.cadastrarProduto(codigoProduto,descricao,valor,quantidade);
@@ -83,10 +53,10 @@ class Escolha3 {
                 System.out.println("ATUALIZAÇÃO DO VALOR DO PRODUTO POR CODIGO");
                 controller.listarProduto();
                 System.out.println("\n");
-                System.out.println("Informe a Matricula do vendedor que deseja alterar: ");
+                System.out.println("Informe o Codigo do Produto que deseja alterar: ");
                 int matriculaAtt = entradaAtt.nextInt();
                 entradaAtt.nextLine();
-                System.out.println("Informe o NOVO SALARIO desejado para o Vendedor: ");
+                System.out.println("Informe o NOVO VALOR desejado para o produto: ");
                 Double salarioAtt = entradaAtt.nextDouble();
                 entradaAtt.nextLine();
 //                controller.atualizarSalarioVendedorPorMatricula(matriculaAtt,salarioAtt);
@@ -94,12 +64,12 @@ class Escolha3 {
 
             case 3:
                 Scanner entradaDelete = new Scanner(System.in);
-                System.out.println("DELEÇÃO DO VENDEDOR POR MATRICULA");
+                System.out.println("DELEÇÃO DO PRODUTO POR CÓDIGO");
 //                controller.listarVendedores();
                 System.out.println("\n");
-                System.out.println("Informe a matricula do Vendedor que deseja deletar: ");
+                System.out.println("Informe o codigo do Produto que deseja deletar: ");
                 int codigoDelete = entradaDelete.nextInt();
-//                controller.deletarVendedor(codigoDelete);
+                controller.deletarProdutoPorCodigo(codigoDelete);
                 return true;
             default:
                 System.out.println("Opção inválida" + "\n" + "Por favor, escolha um de nossos serviços.");
@@ -112,12 +82,12 @@ class Escolha3 {
         System.out.println("-----------------------------------------" + "\n" +
                 "BEM VINDO AO SISTEMA DO PROJETO BD2" + "\n" +
                 "-----------------------------------------" + "\n" +
-                "MANIPULAÇÃO VENDEDOR" +
+                "MANIPULAÇÃO PRODUTO" +
                 "\n-----------------------------------------" + "\n" +
                 "DIGITE A OPÇÃO DESEJADA: " + "\n" +
-                "[1] Para CADASTRAR um vendedor" + "\n" +
-                "[2] Para ATUALIZAR um vendedor" + "\n" +
-                "[3] Para DELETAR um vendedor" + "\n" +
+                "[1] Para CADASTRAR um produto" + "\n" +
+                "[2] Para ATUALIZAR um produto" + "\n" +
+                "[3] Para DELETAR um produto" + "\n" +
                 "-----------------------------------------");
 
 
