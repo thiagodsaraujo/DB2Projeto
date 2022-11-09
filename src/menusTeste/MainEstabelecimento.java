@@ -1,4 +1,4 @@
-package Teste;
+package menusTeste;
 
 import controller.EstabelecimentoController;
 import java.util.Scanner;

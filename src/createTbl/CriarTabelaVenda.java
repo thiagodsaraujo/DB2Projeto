@@ -16,7 +16,6 @@ public class CriarTabelaVenda {
                 "codigoVenda int PRIMARY KEY, " +
                 "codigoProd int NOT NULL," +
                 "codVendedor int NOT NULL," +
-                "valorVenda NUMERIC(10,2)," +
                 "qntdVendida int NOT NULL," +
                 "FOREIGN KEY(codigoProd) REFERENCES produto(codigoproduto), " +
                 "FOREIGN KEY(codVendedor) REFERENCES vendedor(matricula)" +

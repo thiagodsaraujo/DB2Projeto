@@ -1,4 +1,4 @@
-package Teste;
+package menusTeste;
 
 import controller.VendaController;
 
@@ -8,7 +8,7 @@ public class MainVenda {
 
     public static void main(String[] args) {
 
-        Escolha3 esc = new Escolha3();
+        Escolha4 esc = new Escolha4();
 
         boolean val = false;
 

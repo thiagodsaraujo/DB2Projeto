@@ -1,4 +1,4 @@
-package Teste;
+package menusTeste;
 
 import controller.ProdutoController;
 
@@ -33,7 +33,7 @@ class Escolha3 {
                 System.out.println("Informe o codigo do Produto: ");
                 int codigoProduto = entrada.nextInt();
                 entrada.nextLine();
-                System.out.println("Informe a descricao desejado para o vendedor: ");
+                System.out.println("Informe a descricao desejado para o produto: ");
                 String descricao = entrada.nextLine();
                 System.out.println("Informe o valor do Produto:" + descricao + " para cadastro em R$: ");
                 Double valor = entrada.nextDouble();

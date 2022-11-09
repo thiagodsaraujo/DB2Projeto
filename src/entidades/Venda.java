@@ -8,19 +8,15 @@ public class Venda {
 
     public int codVendedor;
 
-    public Double valorVenda;
-
     private int qntdVendida;
 
     public Venda() {
     }
 
-
-    public Venda(int codigoVenda, int codigoProd, int codVendedor, Double valorVenda, int qntdVendida) {
+    public Venda(int codigoVenda, int codigoProd, int codVendedor, int qntdVendida) {
         this.codigoVenda = codigoVenda;
         this.codigoProd = codigoProd;
         this.codVendedor = codVendedor;
-        this.valorVenda = valorVenda;
         this.qntdVendida = qntdVendida;
     }
 
@@ -46,14 +42,6 @@ public class Venda {
 
     public void setCodVendedor(int codVendedor) {
         this.codVendedor = codVendedor;
-    }
-
-    public Double getValorVenda() {
-        return valorVenda;
-    }
-
-    public void setValorVenda(Double valorVenda) {
-        this.valorVenda = valorVenda;
     }
 
     public int getQntdVendida() {

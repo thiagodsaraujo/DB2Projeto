@@ -25,7 +25,7 @@ public class VendaDAO {
     }
 
     public void cadastrarVenda(Venda venda){
-        String sql = "INSERT INTO venda(codigovenda,codigoprod, codvendedor, valorvenda, quantidade) " +
+        String sql = "INSERT INTO venda(codigovenda,codigoprod, codvendedor,quantidade) " +
                 "VALUES (?,?,?,?,?)";
 
         try {
@@ -35,8 +35,7 @@ public class VendaDAO {
             preparador.setInt(1,venda.getCodigoVenda());
             preparador.setInt(2,venda.getCodigoProd());
             preparador.setInt(3,venda.getCodVendedor());
-            preparador.setDouble(4,venda.getValorVenda());
-            preparador.setInt(5,venda.getQntdVendida());
+            preparador.setInt(4,venda.getQntdVendida());
 
             preparador.execute();
             preparador.close();
@@ -82,7 +81,6 @@ public class VendaDAO {
                 venda.setCodigoVenda(resultados.getInt("codigovenda"));
                 venda.setCodigoProd(resultados.getInt("codigoprod"));
                 venda.setCodVendedor(resultados.getInt("codigovendedor"));
-                venda.setValorVenda(resultados.getDouble("valorvenda"));
                 venda.setQntdVendida(resultados.getInt("quantidade"));
             }
 
