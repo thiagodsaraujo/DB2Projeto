@@ -1,4 +1,4 @@
-package Conexao;
+package conexao;
 
 import java.sql.*;
 import java.util.logging.Level;

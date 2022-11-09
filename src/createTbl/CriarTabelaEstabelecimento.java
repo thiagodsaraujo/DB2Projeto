@@ -1,6 +1,6 @@
-package CriarTabelas;
+package createTbl;
 
-import Conexao.Conecta;
+import conexao.Conecta;
 
 import java.sql.Connection;
 import java.sql.SQLException;

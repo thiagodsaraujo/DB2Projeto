@@ -1,7 +1,6 @@
 package dao;
 
-import Conexao.Conecta;
-import Entidades.Produto;
+import conexao.Conecta;
 import Entidades.Vendedor;
 
 import java.sql.Connection;

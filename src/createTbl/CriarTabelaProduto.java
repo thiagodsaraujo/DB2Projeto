@@ -1,24 +1,22 @@
-package CriarTabelas;
+package createTbl;
 
-import Conexao.Conecta;
+import conexao.Conecta;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CriarTableVendedor {
-
+public class CriarTabelaProduto {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
         Connection conexao = Conecta.criarConexao();
 
 
-        String sql = "CREATE TABLE IF NOT EXISTS vendedor (" +
-                "matricula INT PRIMARY KEY," +
-                "codEst INT," +
-                "nome VARCHAR(100) NOT NULL," +
-                "salario NUMERIC(10,2) NOT NULL," +
-                "FOREIGN KEY (codEst) REFERENCES estabelecimento (codigoEstab)" +
+        String sql = "CREATE TABLE IF NOT EXISTS produto (" +
+                "codigoProduto int PRIMARY KEY, " +
+                "descricao VARCHAR(100) NOT NULL," +
+                "valor NUMERIC(10,2) NOT NULL," +
+                "quantidade int NOT NULL"+
                 ")";
 
 
