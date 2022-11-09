@@ -1,7 +1,7 @@
 package dao;
 
 import conexao.Conecta;
-import Entidades.Produto;
+import entidades.Produto;
 
 import java.sql.*;
 import java.util.ArrayList;

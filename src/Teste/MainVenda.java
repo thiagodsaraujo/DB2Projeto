@@ -1,8 +1,6 @@
 package Teste;
 
-import Controller.ProdutoController;
-import Controller.VendaController;
-import Controller.VendedorController;
+import controller.VendaController;
 
 import java.util.Scanner;
 

@@ -1,11 +1,7 @@
 package Teste;
 
-import Controller.EstabelecimentoController;
-import Controller.VendedorController;
-import Entidades.Vendedor;
-import dao.VendedorDAO;
+import controller.VendedorController;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class MainVendedor {

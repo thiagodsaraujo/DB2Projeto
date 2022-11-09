@@ -1,13 +1,12 @@
 package Teste;
 
-import Entidades.Funcionario;
-import Entidades.Setor;
+import entidades.Funcionario;
+import entidades.Setor;
 import dao.FuncionarioDAO;
 import dao.SetorDAO;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class Exercicio01 {

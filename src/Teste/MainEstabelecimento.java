@@ -1,6 +1,6 @@
 package Teste;
 
-import Controller.EstabelecimentoController;
+import controller.EstabelecimentoController;
 import java.util.Scanner;
 
 public class MainEstabelecimento {
