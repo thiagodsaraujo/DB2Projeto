@@ -1,29 +1,6 @@
 CREATE OR REPLACE FUNCTION funcaoVenda()
 RETURNS TRIGGER AS $$
-
-DECLARE qtdVenda INT;
-DECLARE cod INT;
-DECLARE qtdProduto INT;
-
 BEGIN
-	SELECT v.qntdvendida
-	INTO qtdVenda
-	FROM venda v;
-	
-	SELECT p.quantidade
-	INTO qtdProduto
-	FROM produto p;
-	
-	if qtdProduto < qtdVenda THEN
-		BEGIN
-		UPDATE produto
-		SET estoque = estoque - qntd
-		WHERE codigo = cdgProduto;
-		END;
-	END IF;
-	
-	RAISE NOTICE 'QUANTIDADE: %', qntd;
-
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -36,35 +13,54 @@ EXECUTE PROCEDURE funcaoVenda();
 
 CREATE OR REPLACE FUNCTION InsertVenda()
 RETURNS TRIGGER AS $$
+DECLARE qtdVenda INT;
+DECLARE cod INT;
+DECLARE qtdProduto INT;
+
 BEGIN
-	UPDATE produto
-	SET estoque = estoque - NEW.quantidade
-	WHERE codigo = NEW.prod;
-	
+
+	SELECT p.quantidade
+	INTO qtdProduto
+	FROM produto p
+	WHERE p.codigoproduto = new.codigoprod;
+
+
+	IF NEW.qntdvendida > qtdProduto THEN
+		RAISE EXCEPTION 'Estoque Insuficiente';
+	ELSE
+		UPDATE produto
+		SET quantidade = quantidade - new.qntdvendida
+		WHERE codigoproduto = NEW.codigoprod;
+	END IF;
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE TRIGGER trgInserVenda
+CREATE OR REPLACE TRIGGER trgInserVenda
 AFTER INSERT ON venda
 FOR EACH ROW
 EXECUTE PROCEDURE InsertVenda();
 
 CREATE OR REPLACE FUNCTION DeleteVenda()
 RETURNS TRIGGER AS $$
+
+DECLARE qtdVenda INT;
+DECLARE cod INT;
+DECLARE qtdProduto INT;
+
 BEGIN
 	UPDATE produto
-	SET estoque = estoque + OLD.quantidade
-	WHERE codigo = OLD.prod;
-	
-	RETURN NEW;
+	SET quantidade = qtdProduto + OLD.quantidade
+	WHERE codigoproduto = OLD.codigoprod;
+
+	RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE TRIGGER trgDeleteVenda
-AFTER INSERT ON venda
+CREATE OR REPLACE TRIGGER trgDeleteVenda
+AFTER DELETE ON venda
 FOR EACH ROW
 EXECUTE PROCEDURE DeleteVenda();
 

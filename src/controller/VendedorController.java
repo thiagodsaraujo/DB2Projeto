@@ -64,7 +64,7 @@ public class VendedorController {
         List<Vendedor> listaResultado = vendedorDAO.selectTodos();
 
         for (Vendedor v: listaResultado){
-            System.out.println("- Nome do Vendedor: "  + v.getMatricula()  +
+            System.out.println("- Nome do Vendedor: "  + v.getNome()  +
                     "\n- Matricula do Vendedor: " + v.getMatricula()  +
                     "\n- Código do Estabelecimento" + v.getCodEst() +
                     "\n- Salário do Vendedor: R$ " + v.getSalario() +

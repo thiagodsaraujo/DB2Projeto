@@ -23,7 +23,7 @@ public class ProdutoDAO {
 
     public void cadastrarProduto(Produto produto) {
 
-        String sql = "INSERT INTO produto(codigoproduto,descricao, valor, quantidade) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO produto VALUES (?,?,?,?)";
 
         try {
 

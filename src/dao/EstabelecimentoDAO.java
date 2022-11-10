@@ -82,7 +82,7 @@ public class EstabelecimentoDAO {
 
 
     public void deletarEstabelecimento(Estabelecimento estabelecimento) {
-        String sql = "DELETE FROM estabelecimentos WHERE codigostab = ?";
+        String sql = "DELETE FROM estabelecimento WHERE codigoestab = ?";
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
 

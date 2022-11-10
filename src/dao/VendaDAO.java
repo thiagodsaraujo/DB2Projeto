@@ -25,8 +25,7 @@ public class VendaDAO {
     }
 
     public void cadastrarVenda(Venda venda){
-        String sql = "INSERT INTO venda(codigovenda,codigoprod, codvendedor,qntdVendida) " +
-                "VALUES (?,?,?,?)";
+        String sql = "INSERT INTO venda(codigovenda,codigoprod, codvendedor,qntdVendida) VALUES (?,?,?,?)";
 
         try {
 
